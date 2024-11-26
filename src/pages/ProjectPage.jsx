@@ -8,7 +8,7 @@ function ProjectPage() {
       <h3>{`Status: ${oneProject.is_open}`}</h3>
       <h3>Pledges:</h3>
       <ul>
-        {oneProject.pledges.map((pledgeData, key) => {
+        {oneProject.pledges.sort((a, b) => a.date_created - b.date_created).map((pledgeData, key) => {
           return (
             <li key={key}>
               {pledgeData.amount} from {pledgeData.supporter}
