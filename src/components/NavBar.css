@@ -1,0 +1,14 @@
+.nav-bar{
+    display: flex;
+    direction: row;
+    justify-content: space-between;
+    width: 90%;
+    padding: 1rem;
+    background-color: azure;
+}
+
+.nav-bar-link {
+    background-color: blue;
+    padding: 2rem;
+    
+}
