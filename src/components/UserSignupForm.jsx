@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import postUsers from "../api/post-users.js";
+import postLogin from "../api/post-login.js";
 
 
 function UserSignupForm() {
@@ -23,19 +24,30 @@ function UserSignupForm() {
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        if (userDetails.username && userDetails.password) {
-            postUsers(
-                userDetails.username,
-                userDetails.password,
-                userDetails.firstname,
-                userDetails.lastname,
-                userDetails.emailaddress,
-                userDetails.isstaff,
-            ).then((response) => {
-                //window.localStorage.setItem("token", response.token);
-                navigate("/");
+      event.preventDefault();
+      if (userDetails.username && userDetails.password) {
+        postUsers(
+          userDetails.username,
+          userDetails.password,
+          userDetails.firstname,
+          userDetails.lastname,
+          userDetails.emailaddress,
+          userDetails.isstaff,
+        )
+        .then((response) => {
+          return postLogin(userDetails.username, userDetails.password);
+        })
+        .then((response2) => {
+            window.localStorage.setItem("token", response2.token);
+            setAuth({
+              token: response2.token,
             });
+            navigate("/");
+          })
+          .catch((error) => {
+            console.error("Error during signup or login:", error);
+          });
+          //window.localStorage.setItem("token", response.token);
         }
     };
 

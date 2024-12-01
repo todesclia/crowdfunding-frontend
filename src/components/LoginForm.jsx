@@ -30,9 +30,9 @@ function LoginForm() {
     };
 
     const handleSubmit = (event) => {
-       event.preventDefault();
-       const result = loginSchema.safeParse(credentials);
-       if (!result.success) {
+      event.preventDefault();
+      const result = loginSchema.safeParse(credentials);
+      if (!result.success) {
         const error = result.error.errors?.[0];
         if (error) {
           alert(error.message);
