@@ -5,7 +5,7 @@ function ProjectCard(props) {
   const { projectData } = props;
   const baseUrl = import.meta.env.VITE_API_URL;  // Set your base URL here
 
-  const imageUrl = `${baseUrl}${projectData.image}`; 
+  const imageUrl = `${projectData.image}`; 
 
 
   return (
