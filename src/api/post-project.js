@@ -7,6 +7,7 @@ async function postProject(formData) {
       method: "POST",
       headers: {
         "Authorization": `Token ${token}`,
+        "Content-Type": `multipart/form-data`
       },
       body: formData,
       
