@@ -1,4 +1,4 @@
-async function postProject(projecttitle, projectdescription, projectgoal, projectimage) {
+async function postProject(formData) {
     const url = `${import.meta.env.VITE_API_URL}/projects/`;
     const token = window.localStorage.getItem("token")
 
@@ -7,15 +7,10 @@ async function postProject(projecttitle, projectdescription, projectgoal, projec
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorizatiion": `Token ${token}`,
+        "Authorization": `Token ${token}`,
       },
-      body: JSON.stringify({
-        "title": projecttitle,
-        "description": projectdescription,
-        "goal": projectgoal,
-        "image": projectimage,
-        "is_open": true
-      }),
+      body: formData,
+      
     });
   
     if (!response.ok) {

@@ -13,22 +13,29 @@ function AddProjectForm() {
         projecttitle: "",
         projectdescription: "",
         projectgoal: "",
-        projectimage: "",
+        projectimage: null,
     });
 
     const projectSchema = z.object({
       projecttitle: z.string().min(1, { message: "Title must not be empty" }),
       projectgoal: z.string().regex(/^\d+$/, { message: "Goal must be a positive integer" }),
       projectdescription: z.string().min(1, { message: "Description must not be empty" }),
-      projectimage: z.string().url({ message: "Image must be a valid URL" }),
+      projectimage: z.instanceof(File).optional(),
     });  
 
     const handleChange = (event) => {
-        const { id, value } = event.target;
-        setProjectDetails((prevProject) => ({
+        const { id, value, type, files } = event.target;
+        if (type === "file") {
+          setProjectDetails((prevProject) => ({
             ...prevProject,
-            [id]: value,
-        }));
+            [id]: files[0],
+          }));
+        } else {
+          setProjectDetails((prevProject) => ({
+              ...prevProject,
+              [id]: value,
+          }));
+        }
     };
 
     const handleSubmit = async (event) => {
@@ -43,15 +50,20 @@ function AddProjectForm() {
         return;
       }
       try {
-        const response = await postProject(
-          result.data.projecttitle,
-          result.data.projectdescription,
-          parseInt(result.data.projectgoal, 10),
-          result.data.projectimage
-        );
+        const formData = new FormData();
+        formData.append("title", result.data.projecttitle);
+        formData.append("description", result.data.projectdescription);
+        formData.append("goal", parseInt(result.data.projectgoal, 10));
+        formData.append("is_open", true);
+
+        if (result.data.projectimage) {
+          formData.append("image", result.data.projectimage);
+        }
+
+        await postProject(formData);
         navigate("/");
       } catch (error) {
-        alert(error.message); // Handle error feedback
+        alert(error.message);
       }
     };
 
@@ -70,8 +82,8 @@ function AddProjectForm() {
           <input type="number" id="projectgoal" onChange={handleChange} />
         </div>
         <div>
-          <label htmlFor="projectimage">Enter Project Image:</label>
-          <input type="text" id="projectimage" onChange={handleChange} />
+          <label htmlFor="projectimage">Upload Project Image:</label>
+          <input type="file" id="projectimage" onChange={handleChange} />
         </div>
         <button type="submit">Add</button>
       </form>
