@@ -54,7 +54,8 @@ function AddProjectForm() {
         formData.append("title", result.data.projecttitle);
         formData.append("description", result.data.projectdescription);
         formData.append("goal", parseInt(result.data.projectgoal, 10));
-        formData.append("is_open", true);
+        formData.append("is_open", 1);
+        formData.append("owner", 34);
         formData.append("image", result.data.projectimage);
 
         await postProject(formData);
