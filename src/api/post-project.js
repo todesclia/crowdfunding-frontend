@@ -6,7 +6,7 @@ async function postProject(formData) {
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        "Authorization": `Token ${token}`,
+        "Authorization": `Token ${token}`
       },
       body: formData,
       

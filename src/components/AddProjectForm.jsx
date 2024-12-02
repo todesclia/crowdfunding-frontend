@@ -81,7 +81,7 @@ function AddProjectForm() {
         </div>
         <div>
           <label htmlFor="projectimage">Upload Project Image:</label>
-          <input type="file" id="projectimage" onChange={handleChange} />
+          <input type="file" accept="image/*" id="projectimage" onChange={handleChange} />
         </div>
         <button type="submit">Add</button>
       </form>
