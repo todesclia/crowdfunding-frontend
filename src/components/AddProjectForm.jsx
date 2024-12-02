@@ -43,7 +43,7 @@ function AddProjectForm() {
 
        const result = projectSchema.safeParse(projectDetails);
        if (!result.success) {
-        const error = result.error.errors?.[0];
+        const error = result.error.errors?.[0]?.message || "Validation failed";
         if (error) {
           alert(error.message);
         }
@@ -56,8 +56,13 @@ function AddProjectForm() {
         formData.append("goal", parseInt(result.data.projectgoal, 10));
         formData.append("is_open", 1);
         formData.append("owner", 34);
-        formData.append("image", result.data.projectimage);
-
+        if (result.data.projectimage) {
+          formData.append("image", result.data.projectimage);
+        }
+        console.log("FormData entries:");
+        for (let [key, value] of formData.entries()) {
+          console.log(key, value);
+        }
         await postProject(formData);
         navigate("/");
       } catch (error) {
