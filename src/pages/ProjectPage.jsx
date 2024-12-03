@@ -1,23 +1,30 @@
-import { oneProject } from "../data";
+import useProjectDetails from "../hooks/use-project-details";
+import { useParams } from "react-router-dom";
+import ProjectCard from "../components/ProjectCard";
 
 function ProjectPage() {
+  const { id } = useParams();
+  const { projectDetails, isLoading, error } = useProjectDetails(id);
+  
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>; 
+  }
+
+  if (!projectDetails || projectDetails.length === 0) {
+    return <div>No project details found.</div>; 
+  }
+
   return (
-    <div>
-      <h2>{oneProject.title}</h2>
-      <h3>Created at: {oneProject.date_created}</h3>
-      <h3>{`Status: ${oneProject.is_open}`}</h3>
-      <h3>Pledges:</h3>
-      <ul>
-        {oneProject.pledges.sort((a, b) => a.date_created - b.date_created).map((pledgeData, key) => {
-          return (
-            <li key={key}>
-              {pledgeData.amount} from {pledgeData.supporter}
-            </li>
-          );
-        })}
-      </ul>
+    <div id="project-details">
+      {projectDetails.map((projectData, key) => {
+        return <ProjectCard key={key} projectData={projectData} />;
+      })}
     </div>
   );
-}
+};
 
 export default ProjectPage;

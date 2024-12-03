@@ -22,7 +22,6 @@ function NavBar() {
           <Link to="/login">Login</Link>
         )}
         <Link to="/usersignup">User Signup</Link>
-        <Link to="/project">Project</Link>  
         <Link to="/addproject">Add Project</Link>  
       </nav>
       <Outlet />
