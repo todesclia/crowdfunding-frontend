@@ -5,8 +5,7 @@ import ProjectCard from "../components/ProjectCard";
 function ProjectPage() {
   const { id } = useParams();
   const { projectDetails, isLoading, error } = useProjectDetails(id);
-  
-  if (isLoading) {
+  if (isLoading || projectDetails == null) {
     return <div>Loading...</div>;
   }
 
@@ -14,15 +13,9 @@ function ProjectPage() {
     return <div>Error: {error.message}</div>; 
   }
 
-  if (!projectDetails || projectDetails.length === 0) {
-    return <div>No project details found.</div>; 
-  }
-
   return (
     <div id="project-details">
-      {projectDetails.map((projectData, key) => {
-        return <ProjectCard key={key} projectData={projectData} />;
-      })}
+      <ProjectCard projectData={projectDetails} />
     </div>
   );
 };
