@@ -7,7 +7,7 @@ import { z } from "zod";
 
 function AddProjectForm() {
     const navigate = useNavigate();
-    const {auth, setAuth} = useAuth();
+    // const {auth, setAuth} = useAuth();
 
     const [projectDetails, setProjectDetails] = useState({
         projecttitle: "",

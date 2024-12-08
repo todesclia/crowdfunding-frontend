@@ -1,10 +1,11 @@
 import useProjectDetails from "../hooks/use-project-details";
 import { useParams } from "react-router-dom";
-import ProjectCard from "../components/ProjectCard";
+import AddPledgeForm from "../components/AddPledgeForm";
 
 function ProjectPage() {
   const { id } = useParams();
   const { projectDetails, isLoading, error } = useProjectDetails(id);
+  
   if (isLoading || projectDetails == null) {
     return <div>Loading...</div>;
   }
@@ -15,7 +16,7 @@ function ProjectPage() {
 
   return (
     <div id="project-details">
-      <ProjectCard projectData={projectDetails} />
+      <AddPledgeForm projectData={projectDetails} />
     </div>
   );
 };

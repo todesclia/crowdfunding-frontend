@@ -6,6 +6,7 @@ import ProjectPage from "./pages/ProjectPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import UserSigunupPage from "./pages/UserSignupPage.jsx";
 import AddProjectPage from "./pages/AddProjectPage.jsx";
+import AddPledgePage from "./pages/AddPledgePage.jsx";
 
 
 import NavBar from "./components/NavBar.jsx";
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <LoginPage /> },
       { path: "/project/:id", element: <ProjectPage /> },
       { path: "/addproject", element: <AddProjectPage /> },
+      { path: "/pledge/:projectid", element: <AddPledgePage />,}
     ],
   },
 ]);
