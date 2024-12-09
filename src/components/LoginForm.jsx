@@ -61,7 +61,7 @@ function LoginForm() {
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" placeholder="Password" onChange={handleChange} />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="btn">Login</button>
       </form>
     );
   }

@@ -73,7 +73,7 @@ function AddPledgeForm({projectData}) {
           <label htmlFor="isanonymous">Is anonymous:</label>
           <input type="checkbox" id="isanonymous" onChange={handleChange} />
         </div>
-        <button type="submit">Add</button>
+        <button type="submit" className="btn">Add</button>
       </form>
     );
   };

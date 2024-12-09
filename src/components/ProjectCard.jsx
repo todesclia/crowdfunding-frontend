@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import "./ProjectCard.css";
+import "./RippleRise.css";
 
 function ProjectCard(props) {
   const { projectData } = props;

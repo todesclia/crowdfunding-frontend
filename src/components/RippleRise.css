@@ -1,0 +1,231 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik Doodle Shadow";
+  line-height: 1.7;
+  background-color: #fff; /* Homepage background */
+  min-height: 100vh;
+  background-image: url('src/images/house-7405403_1920.jpg');
+  background-size: cover; /* Make the background cover the entire viewport */
+  background-position: center; /* Center the image */
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: #98422f; /* Button color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #b7371b;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ffffff; /* Navbar background */
+  font-family: "Rubik Doodle Shadow";
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Fix the navbar at the top */
+  top: 0; /* Position it at the very top of the page */
+  left: 0; /* Ensure it's aligned to the left edge */
+  width: 100%; /* Ensure it spans the full width of the viewport */
+  z-index: 1000; /* Make sure it stays above other content */
+}
+
+.navbar a {
+  color: #373737; /* Navbar link color */
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: 2rem;
+  font-family: "Rubik Doodle Shadow";
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #f9f9ff;
+}
+
+.navbar .brand {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+/* Home Page */
+.home {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns layout */
+  gap: 2rem;
+  padding: 3rem 1rem 1rem 1rem; /* Add padding to the home container (top and sides) */
+  margin-top: 4rem; /* Adds space between the navbar and the cards */
+
+}
+
+.project-cards-container {
+  grid-column: span 3; /* Make sure the container spans across all three columns */
+  display: grid; /* Change to grid layout for card arrangement */
+  grid-template-columns: repeat(3, 1fr); /* Three columns layout */
+  gap: 20px; /* Spacing between cards */
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Card hover effect */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Forms */
+form {
+  background-color: #94d9ee;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin: 4rem 0 2rem 0; /* Add margin-top to create space between form and navbar */
+}
+
+form label {
+  font-weight: bold;
+  color: #000;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.9rem;
+  margin: 0.8rem 0;
+  border-radius: 8px;
+  border: 1px solid #EDE8F5;
+  font-size: 1rem;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #98422f;
+  box-shadow: 0 0 5px rgba(61, 82, 160, 0.3);
+}
+
+form button {
+  width: 100%;
+  background-color: #dd4509;
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+  background-color: #3D52A0; /* Footer background */
+  color: #EDE8F5; /* Footer text color */
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar a {
+    margin: 0.5rem 0;
+  }
+
+  .home {
+    grid-template-columns: 1fr;
+  }
+
+  .project-cards-container {
+    grid-column: span 1; /* Adjust for mobile screens */
+    padding: 10px;
+  }
+
+  form {
+    padding: 1.5rem;
+  }
+}

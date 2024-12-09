@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import useAuth from "../hooks/use-auth.js";
-import "./NavBar.css";
+import "./RippleRise.css";
 
 function NavBar() {
   const {auth, setAuth} = useAuth();
@@ -12,7 +12,7 @@ function NavBar() {
 
   return (
     <div>
-      <nav className="nav-bar"> 
+      <nav className="navbar"> 
         <Link to="/">Home</Link>
         {auth.token ? (
           <Link to="/" onClick={handleLogout}>
