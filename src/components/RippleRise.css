@@ -6,52 +6,21 @@
 }
 
 body {
-  font-family: "Rubik Doodle Shadow";
+  font-family: "Rubik Doodle Shadow", Arial, Helvetica, sans-serif;
   line-height: 1.7;
-  background-color: #fff; /* Homepage background */
+  background-color: #0e3601;
   min-height: 100vh;
-  background-image: url('src/images/house-7405403_1920.jpg');
-  background-size: cover; /* Make the background cover the entire viewport */
-  background-position: center; /* Center the image */
-  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
-}
-
-/* Utility Classes */
-.container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.mt-1 {
-  margin-top: 1rem;
-}
-
-.mt-2 {
-  margin-top: 2rem;
 }
 
 .btn {
   display: inline-block;
   padding: 0.8rem 1.8rem;
-  background-color: #98422f; /* Button color */
-  color: #fff; /* Button text color */
+  background-color: #fff; /* Button color */
+  color: #000; /* Button text color */
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -68,7 +37,7 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: #ffffff; /* Navbar background */
+  background-color: #0e3601; /* Navbar background */
   font-family: "Rubik Doodle Shadow";
   padding: 1rem;
   display: flex;
@@ -82,7 +51,7 @@ body {
 }
 
 .navbar a {
-  color: #373737; /* Navbar link color */
+  color: #fff; /* Navbar link color */
   text-decoration: none;
   margin: 0 1rem;
   font-size: 2rem;
@@ -91,12 +60,7 @@ body {
 }
 
 .navbar a:hover {
-  color: #f9f9ff;
-}
-
-.navbar .brand {
-  font-size: 1.75rem;
-  font-weight: bold;
+  color: #ff9ea5;
 }
 
 /* Home Page */
@@ -118,12 +82,13 @@ body {
 }
 
 .card {
-  border: 1px solid #ccc;
+  border: 1px solid #ff9ea5;
+  font-family: Geneva, Verdana, sans-serif;
   width: 80%;
   max-width: 300px;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 15px;
-  background-color: white;
+  background-color: #ff9ea5;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
@@ -141,69 +106,61 @@ body {
 .card h3 {
   font-size: 1.3rem;
   margin-top: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.card a {
+  text-decoration: none;
 }
 
 .card p {
   font-size: 1rem;
   margin-top: 10px;
+  color: #fff;
 }
 
 /* Forms */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
 form {
-  background-color: #94d9ee;
+  background-color: #ff9ea5;
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  margin: 4rem 0 2rem 0; /* Add margin-top to create space between form and navbar */
+  margin-top: 8rem; /* Add margin-top to create space between form and navbar */
+  max-width: 600px; /* Set a maximum width for the form */
+  width: 50%; /* Make the form responsive, taking up 90% of the screen on smaller devices */
 }
 
 form label {
+  display: block;
+  margin-bottom: 5px;
   font-weight: bold;
-  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
 }
 
 form input,
-form textarea,
 form select {
   width: 100%;
-  padding: 0.9rem;
+  padding: 8px;
   margin: 0.8rem 0;
   border-radius: 8px;
   border: 1px solid #EDE8F5;
   font-size: 1rem;
 }
 
-form input:focus,
-form textarea:focus {
-  border-color: #98422f;
+form input:focus {
+  border-color: #0693e3;
   box-shadow: 0 0 5px rgba(61, 82, 160, 0.3);
 }
 
-form button {
-  width: 100%;
-  background-color: #dd4509;
-  color: #fff;
-  padding: 1rem;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-form button:hover {
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Footer */
-.footer {
-  background-color: #3D52A0; /* Footer background */
-  color: #EDE8F5; /* Footer text color */
-  padding: 1.5rem 0;
-  text-align: center;
-  font-size: 0.9rem;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -218,14 +175,15 @@ form button:hover {
 
   .home {
     grid-template-columns: 1fr;
+    padding-top: 280px;
   }
 
-  .project-cards-container {
+  .card {
     grid-column: span 1; /* Adjust for mobile screens */
-    padding: 10px;
+    padding-top: 20px;
   }
 
-  form {
-    padding: 1.5rem;
+  .form-container {
+    padding-top: 200px;
   }
 }

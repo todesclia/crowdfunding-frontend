@@ -71,25 +71,27 @@ function AddProjectForm() {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="projecttitle">Project Title:</label>
-          <input type="text" id="projecttitle" onChange={handleChange}/>
-        </div>
-        <div>
-          <label htmlFor="projectdescription">Enter Project Description:</label>
-          <input type="text" id="projectdescription" onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="projectgoal">Enter Project Goal:</label>
-          <input type="number" id="projectgoal" onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="projectimage">Upload Project Image:</label>
-          <input type="file" accept="image/*" id="projectimage" onChange={handleChange} />
-        </div>
-        <button type="submit" className="btn">Add</button>
-      </form>
+      <div className="form-container">
+        <form onSubmit={handleSubmit} className="form" >
+          <div className="form-group">
+            <label htmlFor="projecttitle">Project Title:</label>
+            <input type="text" id="projecttitle" onChange={handleChange}/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="projectdescription">Enter Project Description:</label>
+            <input type="text" id="projectdescription" onChange={handleChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="projectgoal">Enter Project Goal:</label>
+            <input type="number" id="projectgoal" onChange={handleChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="projectimage">Upload Project Image:</label>
+            <input type="file" accept="image/*" id="projectimage" onChange={handleChange} />
+          </div>
+          <button type="submit" className="btn">Add</button>
+        </form>
+      </div>
     );
   }
 
