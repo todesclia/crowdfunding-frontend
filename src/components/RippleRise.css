@@ -5,10 +5,11 @@
   box-sizing: border-box;
 }
 
+/* border: 4px solid red; */
+
 body {
   font-family: "Rubik Doodle Shadow", Arial, Helvetica, sans-serif;
   line-height: 1.7;
-  /* background-color: #0f5759; */
   background-color: #0e3601;
   min-height: 100vh;
   background-size: cover;
@@ -26,6 +27,7 @@ body {
   border-radius: 50px;
   cursor: pointer;
   text-align: center;
+  float: right;
   font-size: 1rem;
   font-weight: bold;
   transition: all 0.3s ease;
@@ -71,19 +73,12 @@ body {
   gap: 2rem;
   padding: 3rem 1rem 1rem 1rem; /* Add padding to the home container (top and sides) */
   margin-top: 4rem; /* Adds space between the navbar and the cards */
-
-}
-
-.project-cards-container {
-  grid-column: span 3;
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
 }
 
 .cards {
-  border: 1px solid #84363d;
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack child elements in a column */
+  border: 1px solid #ff9ea5;
   font-family: Geneva, Verdana, sans-serif;
   width: 80%;
   margin-top: 2em;
@@ -113,6 +108,10 @@ body {
 }
 
 .cards a {
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack child elements in a column */
+  justify-content: center; /* Center elements vertically */
+  align-items: center; /* Center elements horizontally */
   text-decoration: none;
 }
 
@@ -178,16 +177,17 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 1rem;
 }
 
 form {
   background-color: #ff9ea5;
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   margin-top: 8rem; /* Add margin-top to create space between form and navbar */
   max-width: 600px; /* Set a maximum width for the form */
-  width: 50%; /* Make the form responsive, taking up 90% of the screen on smaller devices */
+  width: 90%; /* Make the form responsive, taking up 90% of the screen on smaller devices */
 }
 
 form label {
@@ -201,8 +201,8 @@ form label {
 form input,
 form select {
   width: 100%;
-  padding: 8px;
-  margin: 0.8rem 0;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
   border-radius: 8px;
   border: 1px solid #fff;
   font-size: 1rem;
@@ -223,19 +223,72 @@ form input:focus {
 
   .navbar a {
     margin: 0.5rem 0;
+    font-size: 1rem; /* Adjust form font size */
   }
 
   .home {
     grid-template-columns: 1fr;
-    padding-top: 280px;
+    margin-top: 9rem;
   }
 
-  .card {
-    grid-column: span 1; /* Adjust for mobile screens */
-    padding-top: 20px;
+  .card-details {
+    padding: 0.6rem;
+    margin-top: 13.5rem;
+  }
+
+  .card-details img {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .card-details h3 {
+    font-size: 0.9rem;
+  }
+  
+  .card-details p {
+    font-size: 0.7rem;
+  }  
+
+  .cards {
+    padding: 0.6rem;
+    align-items: center;
+  }
+  
+  .cards img {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .cards h3 {
+    font-size: 0.9rem;
+  }
+  
+  .cards p {
+    font-size: 0.7rem;
   }
 
   .form-container {
-    padding-top: 200px;
+    margin: 0.9rem 0.9rem;
+  }
+
+  form {
+    margin-top: 10rem; /* Adjust margin for smaller screens */
+    padding: 1.0rem; /* Reduce padding inside the form */
+  }
+
+  form label {
+    font-size: 0.8rem; /* Smaller label font size */
+  }
+
+  form input,
+  form select {
+    font-size: 0.9rem; /* Adjust input font size */
+    padding: 0.6rem; /* Reduce input padding */
+  }
+
+  .btn {
+    font-size: 0.8rem; /* Adjust input font size */
   }
 }
