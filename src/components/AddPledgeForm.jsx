@@ -36,9 +36,7 @@ function AddPledgeForm({projectData}) {
 
     const handleSubmit = async (event) => {
        event.preventDefault();
-
        const result = pledgeSchema.safeParse(pledgeDetails);
-       console.log(result);
 
        if (!result.success) {
         const error = result.error.errors?.[0]?.message || "Validation failed";
@@ -47,7 +45,6 @@ function AddPledgeForm({projectData}) {
         }
         return;
       } else {
-        console.log(result.data.isanonymous);
         postPledge(
           result.data.amount, 
           result.data.comment, 

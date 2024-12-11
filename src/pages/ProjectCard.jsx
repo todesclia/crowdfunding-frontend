@@ -1,21 +1,20 @@
+
 import { Link } from "react-router-dom";
 
-import "./RippleRise.css";
+import "../components/RippleRise.css";
 
 function ProjectCard(props) {
   const { projectData } = props;
+  console.log(projectData);
   const projectLink = `project/${projectData.id}`;
   const imageUrl = `${projectData.image}`;
 
   return (
-    <div className="project-card">
-      <Link to={projectLink}>
-        <img className=src={imageUrl} alt={projectData.title} />
-        <h3>{projectData.title}</h3>
-      </Link>
+    <div className="card-details">
+      <img src={imageUrl} alt={projectData.title} />
+      <h3>{projectData.title}</h3>
       <p>{projectData.description}</p>
       <p>{projectData.goal}</p>
-      <p>{projectData.pledges}</p>
     </div>
   );
 }

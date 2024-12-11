@@ -1,14 +1,11 @@
 import { useState } from "react";
 import postProject from "../api/post-project.js";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../hooks/use-auth.js";
 import { z } from "zod";
 
 
 function AddProjectForm() {
     const navigate = useNavigate();
-    // const {auth, setAuth} = useAuth();
-
     const [projectDetails, setProjectDetails] = useState({
         projecttitle: "",
         projectdescription: "",
@@ -59,10 +56,7 @@ function AddProjectForm() {
         if (result.data.projectimage) {
           formData.append("image", result.data.projectimage);
         }
-        console.log("FormData entries:");
-        for (let [key, value] of formData.entries()) {
-          console.log(key, value);
-        }
+       
         await postProject(formData);
         navigate("/");
       } catch (error) {
@@ -73,19 +67,19 @@ function AddProjectForm() {
     return (
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form" >
-          <div className="form-group">
+          <div>
             <label htmlFor="projecttitle">Project Title:</label>
             <input type="text" id="projecttitle" onChange={handleChange}/>
           </div>
-          <div className="form-group">
+          <div>
             <label htmlFor="projectdescription">Enter Project Description:</label>
             <input type="text" id="projectdescription" onChange={handleChange} />
           </div>
-          <div className="form-group">
+          <div>
             <label htmlFor="projectgoal">Enter Project Goal:</label>
             <input type="number" id="projectgoal" onChange={handleChange} />
           </div>
-          <div className="form-group">
+          <div>
             <label htmlFor="projectimage">Upload Project Image:</label>
             <input type="file" accept="image/*" id="projectimage" onChange={handleChange} />
           </div>

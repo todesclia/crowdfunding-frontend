@@ -1,6 +1,8 @@
 import useProjectDetails from "../hooks/use-project-details";
 import { useParams } from "react-router-dom";
 import AddPledgeForm from "../components/AddPledgeForm";
+import ProjectCard from "./ProjectCard";
+import "../components/RippleRise.css"
 
 function ProjectPage() {
   const { id } = useParams();
@@ -15,8 +17,9 @@ function ProjectPage() {
   }
 
   return (
-    <div id="project-details">
-      <AddPledgeForm projectData={projectDetails} />
+    <div className="project-details">
+        <ProjectCard projectData={projectDetails} />
+        <AddPledgeForm projectData={projectDetails} />
     </div>
   );
 };
