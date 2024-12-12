@@ -55,12 +55,12 @@ function LoginForm() {
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form">
           <div>
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter username" onChange={handleChange}/>
+            <label htmlFor="username">Enter your username</label>
+            <input type="text" id="username" onChange={handleChange}/>
           </div>
           <div>
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" placeholder="Password" onChange={handleChange} />
+            <label htmlFor="password">Enter your password</label>
+            <input type="password" id="password" onChange={handleChange} />
           </div>
           <button type="submit" className="btn">Login</button>
         </form>

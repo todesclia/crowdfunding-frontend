@@ -68,19 +68,19 @@ function AddProjectForm() {
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form" >
           <div>
-            <label htmlFor="projecttitle">Project Title:</label>
+            <label htmlFor="projecttitle">Give your fundraiser a title</label>
             <input type="text" id="projecttitle" onChange={handleChange}/>
           </div>
           <div>
-            <label htmlFor="projectdescription">Enter Project Description:</label>
-            <input type="text" id="projectdescription" onChange={handleChange} />
+            <label htmlFor="projectdescription">Provide your fundraising reasons and describe how the funds will be used</label>
+            <textarea id="projectdescription" onChange={handleChange} />
           </div>
           <div>
-            <label htmlFor="projectgoal">Enter Project Goal:</label>
+            <label htmlFor="projectgoal">Enter your inital target $</label>
             <input type="number" id="projectgoal" onChange={handleChange} />
           </div>
           <div>
-            <label htmlFor="projectimage">Upload Project Image:</label>
+            <label htmlFor="projectimage">Add a cover image</label>
             <input type="file" accept="image/*" id="projectimage" onChange={handleChange} />
           </div>
           <button type="submit" className="btn">Add</button>

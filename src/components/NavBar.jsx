@@ -14,7 +14,7 @@ function NavBar() {
     <div>
       <nav className="navbar"> 
         <Link to="/">Home</Link>
-        <Link to="/addproject">Projects</Link>
+        <Link to="/projects">View Projects</Link>
         {auth.token ? (
           <Link to="/" onClick={handleLogout}>
               Logout

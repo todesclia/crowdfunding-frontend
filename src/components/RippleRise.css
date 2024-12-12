@@ -5,21 +5,16 @@
   box-sizing: border-box;
 }
 
-/* border: 4px solid red; */
-
 body {
-  font-family: "Rubik Doodle Shadow", Arial, Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   line-height: 1.7;
   background-color: #0e3601;
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
 }
 
 .btn {
-  display: inline-block;
   padding: 0.8rem 1.8rem;
   background-color: #fff;
   color: #0e3601;
@@ -40,52 +35,108 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: #0e3601; /* Navbar background */
-  font-family: "Rubik Doodle Shadow";
-  padding: 1rem;
+  background-color: #0e3601;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed; /* Fix the navbar at the top */
-  top: 0; /* Position it at the very top of the page */
-  left: 0; /* Ensure it's aligned to the left edge */
-  width: 100%; /* Ensure it spans the full width of the viewport */
-  z-index: 1000; /* Make sure it stays above other content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
 }
 
 .navbar a {
-  color: #fff; /* Navbar link color */
+  color: #fff;
   text-decoration: none;
-  margin: 0 1rem;
+  margin: 1.5rem;
   font-size: 2rem;
-  font-family: "Rubik Doodle Shadow";
   transition: color 0.3s ease;
 }
 
 .navbar a:hover {
-  color: #ff9ea5;
+  color: #849E9Fff;
 }
 
 /* Home Page */
-.home {
+.project-list {
+  margin-top: 1.5rem;
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three columns layout */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 2rem;
-  padding: 3rem 1rem 1rem 1rem; /* Add padding to the home container (top and sides) */
-  margin-top: 4rem; /* Adds space between the navbar and the cards */
+  padding: 3rem 1rem 1rem 1rem;
+  max-width: 100%;
+  overflow-x: hidden;
+  justify-items: center;}
+
+.home-page {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background-image: url('/public/still-water.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-page-content {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 0.75rem;
+  display: inline-block;
+  padding: 0.8rem 1.8rem 1.5rem;
+  color: #0e3601;
+}
+
+.home-page h1 {
+  font-size: 2.5rem;
+}
+
+.home-page h2 {
+  font-size: 1.5rem;
+}
+
+.home-page p {
+  font-size: 1.0rem;
+}
+
+.home-page-btn {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.0rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #0e3601;
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.home-page-btn:hover {
+  background-color: #c0bfbf;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cards {
-  display: flex; /* Enable flexbox */
-  flex-direction: column; /* Stack child elements in a column */
-  border: 1px solid #ff9ea5;
-  font-family: Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #55501Bff;
   width: 80%;
   margin-top: 2em;
   max-width: 300px;
   border-radius: 10px;
   padding: 15px;
-  background-color: #ff9ea5;
+  background-color: #55501Bff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
@@ -108,45 +159,44 @@ body {
 }
 
 .cards a {
-  display: flex; /* Enable flexbox */
-  flex-direction: column; /* Stack child elements in a column */
-  justify-content: center; /* Center elements vertically */
-  align-items: center; /* Center elements horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
 }
 
 .cards p {
   font-size: 1rem;
   margin-top: 10px;
-  color: #0b2d01;
+  color: #849E9Fff;
 }
 
 .project-details {
-  display: flex; /* Enable flexbox */
-  flex-direction: column; /* Stack child elements in a column */
-  justify-content: center; /* Center elements vertically */
-  align-items: center; /* Center elements horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-details {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ff9ea5;
-  font-family: Geneva, Verdana, sans-serif;
+  justify-content: left;
+  align-items: left;
+  border: 1px solid #55501Bff;
   margin-top: 8rem;
   border-radius: 10px;
   padding: 15px;
-  background-color: #ff9ea5;
+  background-color: #55501Bff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
-  width: 50%;
+  width: 100%;
   max-width: 600px; 
 }
 
 .card-details img {
-  width: 80%;
+  width: 100%;
   height: auto;
   padding: 15 px;
   margin-bottom: 15px;
@@ -155,8 +205,9 @@ body {
 
 
 .card-details h3 {
-  font-size: 1.3rem;
+  font-size: 2rem;
   margin-top: 10px;
+  text-align: center;
   color: #fff;
 }
 
@@ -165,9 +216,9 @@ body {
 }
 
 .card-details p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-top: 10px;
-  color: #0b2d01;
+  color: #fff;
 }
 
 /* Forms */
@@ -177,42 +228,54 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 1rem;
 }
 
 form {
-  background-color: #ff9ea5;
+  background-color: #55501Bff;
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  margin-top: 8rem; /* Add margin-top to create space between form and navbar */
-  max-width: 600px; /* Set a maximum width for the form */
-  width: 90%; /* Make the form responsive, taking up 90% of the screen on smaller devices */
+  margin-top: 8rem;
+  max-width: 600px;
 }
 
 form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #0b2d01;
+  color: #fff;
 }
 
 form input,
 form select {
   width: 100%;
   padding: 0.8rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0rem 3rem;
   border-radius: 8px;
   border: 1px solid #fff;
   font-size: 1rem;
 }
 
 form input:focus {
-  border-color: #ff9ea5;
+  border-color: #55501Bff;
   box-shadow: 0 0 5px rgba(61, 82, 160, 0.3);
 }
 
+form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 1rem 0rem 3rem;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  font-size: 1rem;
+}
+
+.checkbox-container {
+  display: flex;
+  margin: 1rem 0;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5rem);
+  margin-left: 10px;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -223,7 +286,7 @@ form input:focus {
 
   .navbar a {
     margin: 0.5rem 0;
-    font-size: 1rem; /* Adjust form font size */
+    font-size: 1rem;
   }
 
   .home {
@@ -274,21 +337,21 @@ form input:focus {
   }
 
   form {
-    margin-top: 10rem; /* Adjust margin for smaller screens */
-    padding: 1.0rem; /* Reduce padding inside the form */
+    margin-top: 10rem;
+    padding: 1.0rem;
   }
 
   form label {
-    font-size: 0.8rem; /* Smaller label font size */
+    font-size: 0.8rem;
   }
 
   form input,
   form select {
-    font-size: 0.9rem; /* Adjust input font size */
-    padding: 0.6rem; /* Reduce input padding */
+    font-size: 0.9rem;
+    padding: 0.6rem;
   }
 
   .btn {
-    font-size: 0.8rem; /* Adjust input font size */
+    font-size: 0.8rem;
   }
 }

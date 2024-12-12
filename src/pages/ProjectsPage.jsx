@@ -7,13 +7,6 @@ function HomePage() {
 
   return (
     <div>
-      <div className="home-page">
-        <div className="home-page-content">
-          <h1>Ripple Rise</h1>
-          <h2>Community driven funding programs</h2>
-          <a className="home-page-btn" href="/addproject">Start a project</a>
-        </div> 
-      </div>   
       <div className="project-list">
           {projects.map((projectData, key) => {
             return <ProjectCardsContainer key={key} projectData={projectData} />;

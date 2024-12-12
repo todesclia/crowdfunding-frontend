@@ -57,21 +57,24 @@ function AddPledgeForm({projectData}) {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="amount">Amount:</label>
-          <input type="number" id="amount" onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="comment">Comment:</label>
-          <input type="text" id="comment" onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="isanonymous">Is anonymous:</label>
-          <input type="checkbox" id="isanonymous" onChange={handleChange} />
-        </div>
-        <button type="submit" className="btn">Add</button>
-      </form>
+      <div className="form-container">
+        <form onSubmit={handleSubmit} className="form">
+          <div>
+            <label htmlFor="amount">Enter your donation</label>
+            <input type="number" id="amount" onChange={handleChange} placeholder="$" />
+          </div>
+          <div>
+            <label htmlFor="comment">Add a message (optional)</label>
+            <input type="text" id="comment" onChange={handleChange} />
+          </div>
+          <div className = "checkbox-container">
+            <label htmlFor="isanonymous" style={{ display: 'flex', whiteSpace: 'nowrap', alignItems: 'flex-start'}} >
+              <input type="checkbox" id="isanonymous" onChange={handleChange} />&nbsp;&nbsp;&nbsp;Don't display my name publicly
+            </label>
+          </div>
+          <button type="submit" className="btn">Add</button>
+        </form>
+      </div>
     );
   };
 

@@ -62,26 +62,26 @@ function UserSignupForm() {
     <div className="form-container">
       <form onSubmit={handleSubmit} className="form">
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Enter your username</label>
           <input type="text" id="username" onChange={handleChange}/>
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Enter your password</label>
           <input type="password" id="password" onChange={handleChange}/>
         </div>
         <div>
-          <label htmlFor="firstname">Firstname:</label>
+          <label htmlFor="firstname">Enter your firstname</label>
           <input type="text" id="firstname" onChange={handleChange}/>
         </div>
         <div>
-          <label htmlFor="lastname">Lastname:</label>
+          <label htmlFor="lastname">Enter your lastname</label>
           <input type="text" id="lastname" onChange={handleChange}/>
         </div>
         <div>
-          <label htmlFor="emailaddress">Email:</label>
+          <label htmlFor="emailaddress">Enter your email address</label>
           <input type="text" id="emailaddress" onChange={handleChange}/>
         </div>
-        <button type="submit" className="btn">Submit</button>
+        <button type="submit" className="btn">Sign up</button>
       </form>
     </div>
   );

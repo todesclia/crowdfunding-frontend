@@ -11,10 +11,10 @@ function ProjectCard(props) {
 
   return (
     <div className="card-details">
-      <img src={imageUrl} alt={projectData.title} />
       <h3>{projectData.title}</h3>
+      <img src={imageUrl} alt={projectData.title} />
       <p>{projectData.description}</p>
-      <p>{projectData.goal}</p>
+      <p>Target &nbsp; $ {projectData.goal}</p>
     </div>
   );
 }
