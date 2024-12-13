@@ -1,6 +1,8 @@
+import useAuth from "../hooks/use-auth.js";
 import "../components/RippleRise.css";
 
 function ProjectCard(props) {
+  const {auth} = useAuth();
   const { projectData } = props;
   const imageUrl = `${projectData.image}`;
 
@@ -10,7 +12,11 @@ function ProjectCard(props) {
       <img src={imageUrl} alt={projectData.title} />
       <p>{projectData.description}</p>
       <p>Target &nbsp; $ {projectData.goal}</p>
-      <a className="home-page-btn" href="#pledgeForm">Make a Pledge</a>
+      {auth.token ? (
+        <a className="home-page-btn" href="#pledgeForm">Make a Pledge</a>
+      ) : (
+        <div>Please log in to make a pledge</div>
+      )}
     </div>
   );
 }
