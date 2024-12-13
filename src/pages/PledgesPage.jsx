@@ -1,14 +1,11 @@
 import useProjectDetails from "../hooks/use-project-details";
 import { useParams } from "react-router-dom";
-import AddPledgeForm from "../components/AddPledgeForm";
-import ProjectCard from "../components/ProjectCard";
-import PledgesContainer from "../components/PledgesContainer";
 import "../components/RippleRise.css"
+import PledgesContainer from "../components/PledgesContainer";
 
-function ProjectPage() {
+function PledgesPage() {
   const { id } = useParams();
   const { projectDetails, isLoading, error } = useProjectDetails(id);
-  console.log(projectDetails);
   
   if (isLoading || projectDetails == null) {
     return <div>Loading...</div>;
@@ -19,12 +16,10 @@ function ProjectPage() {
   }
 
   return (
-    <div className="project-details">
-        <ProjectCard projectData={projectDetails} />
+    <div>
         <PledgesContainer projectData={projectDetails} />
-        <AddPledgeForm projectData={projectDetails} />
     </div>
   );
 };
 
-export default ProjectPage;
+export default PledgesPage;

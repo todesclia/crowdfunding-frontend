@@ -69,7 +69,8 @@ body {
   padding: 3rem 1rem 1rem 1rem;
   max-width: 100%;
   overflow-x: hidden;
-  justify-items: center;}
+  justify-items: center;
+}
 
 .home-page {
   position: relative;
@@ -174,6 +175,7 @@ body {
 
 .project-details {
   display: flex;
+  scroll-behavior: smooth;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -181,6 +183,7 @@ body {
 
 .card-details {
   display: flex;
+  scroll-behavior: smooth;
   flex-direction: column;
   justify-content: left;
   align-items: left;
@@ -203,6 +206,12 @@ body {
   border-radius: 8px;
 }
 
+.card-details h1 {
+  font-size: 2rem;
+  margin-top: 10px;
+  text-align: center;
+  color: #fff;
+}
 
 .card-details h3 {
   font-size: 2rem;
@@ -213,6 +222,19 @@ body {
 
 .card-details a {
   text-decoration: none;
+  scroll-behavior: smooth;
+  color: #0e3601;
+  background-color: #fff;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.0rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin: 2rem;
 }
 
 .card-details p {
@@ -221,11 +243,14 @@ body {
   color: #fff;
 }
 
+.card-details ul {
+  list-style-type: none;
+}
+
 /* Forms */
 .form-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
@@ -235,7 +260,7 @@ form {
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  margin-top: 8rem;
+  margin-top: 7rem;
   max-width: 600px;
 }
 
@@ -277,6 +302,23 @@ input[type="checkbox"] {
   margin-left: 10px;
 }
 
+.pledges-list {
+  margin-top: 1.5rem;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 2rem;
+  padding: 3rem 1rem 1rem 1rem;
+  max-width: 100%;
+  overflow-x: hidden;
+  justify-items: center;}
+
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
@@ -294,6 +336,10 @@ input[type="checkbox"] {
     margin-top: 9rem;
   }
 
+  .project-list {
+    margin-top: 7.5rem;
+  }
+
   .card-details {
     padding: 0.6rem;
     margin-top: 13.5rem;
@@ -303,6 +349,10 @@ input[type="checkbox"] {
     width: 50%;
     height: auto;
     border-radius: 8px;
+  }
+
+  .card-details h1 {
+    font-size: 0.9em;
   }
   
   .card-details h3 {
@@ -323,7 +373,7 @@ input[type="checkbox"] {
     height: auto;
     border-radius: 8px;
   }
-  
+
   .cards h3 {
     font-size: 0.9rem;
   }

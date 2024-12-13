@@ -58,7 +58,7 @@ function AddPledgeForm({projectData}) {
 
     return (
       <div className="form-container">
-        <form onSubmit={handleSubmit} className="form">
+        <form id="pledgeForm" onSubmit={handleSubmit} className="form">
           <div>
             <label htmlFor="amount">Enter your donation</label>
             <input type="number" id="amount" onChange={handleChange} placeholder="$" />

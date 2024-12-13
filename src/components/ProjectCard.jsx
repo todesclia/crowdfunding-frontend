@@ -1,12 +1,7 @@
-
-import { Link } from "react-router-dom";
-
 import "../components/RippleRise.css";
 
 function ProjectCard(props) {
   const { projectData } = props;
-  console.log(projectData);
-  const projectLink = `project/${projectData.id}`;
   const imageUrl = `${projectData.image}`;
 
   return (
@@ -15,6 +10,7 @@ function ProjectCard(props) {
       <img src={imageUrl} alt={projectData.title} />
       <p>{projectData.description}</p>
       <p>Target &nbsp; $ {projectData.goal}</p>
+      <a className="home-page-btn" href="#pledgeForm">Make a Pledge</a>
     </div>
   );
 }
