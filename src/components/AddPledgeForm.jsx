@@ -9,7 +9,6 @@ function AddPledgeForm({projectData}) {
 
     const projectID = projectData.id;  
     const userID = projectData.owner;
-    const navigate = useNavigate();
 
     const [pledgeDetails, setPledgeDetails] = useState({
         amount: "",
@@ -18,6 +17,7 @@ function AddPledgeForm({projectData}) {
         projectID: projectID,
         supporter: userID,
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const pledgeSchema = z.object({
       amount: z.coerce.string().regex(/^\d+$/, { message: "Amount must be a positive integer" }),
@@ -35,24 +35,25 @@ function AddPledgeForm({projectData}) {
     };
 
     const handleSubmit = async (event) => {
-       event.preventDefault();
-       const result = pledgeSchema.safeParse(pledgeDetails);
+      event.preventDefault();
+      if (isSubmitting) return;
+      setIsSubmitting(true);
+      const result = pledgeSchema.safeParse(pledgeDetails);
 
-       if (!result.success) {
-        const error = result.error.errors?.[0]?.message || "Validation failed";
-        if (error) {
-          alert(error.message);
-        }
-        return;
-      } else {
-        postPledge(
-          result.data.amount, 
-          result.data.comment, 
-          result.data.projectID, 
+      try {
+        // Post the pledge data to the server
+        const response = await postPledge(
+          result.data.amount,
+          result.data.comment,
+          result.data.projectID,
           result.data.isanonymous
-        ).then((response) => {
-          navigate(`/project/${projectID}`);
-        });
+        );
+        window.location.reload();
+      } catch (error) {
+        console.error("Error submitting pledge:", error);
+        alert("There was an error processing your pledge.");
+      } finally {
+        setIsSubmitting(false); // Reset the form submission state
       }
     };
 
@@ -72,7 +73,9 @@ function AddPledgeForm({projectData}) {
               <input type="checkbox" id="isanonymous" onChange={handleChange} />&nbsp;&nbsp;&nbsp;Don't display my name publicly
             </label>
           </div>
-          <button type="submit" className="btn">Add</button>
+          <button type="submit" className="btn" disabled={isSubmitting}>
+          {isSubmitting ? "Submitting..." : "Add"} 
+          </button>
         </form>
       </div>
     );

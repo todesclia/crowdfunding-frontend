@@ -8,7 +8,6 @@ import "../components/RippleRise.css"
 function ProjectPage() {
   const { id } = useParams();
   const { projectDetails, isLoading, error } = useProjectDetails(id);
-  console.log(projectDetails);
   
   if (isLoading || projectDetails == null) {
     return <div>Loading...</div>;
