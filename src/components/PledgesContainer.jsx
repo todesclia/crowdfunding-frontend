@@ -73,7 +73,7 @@ function PledgesContainer(props) {
                                     }</p>
                         <div>
                             {String(pledge.supporter) === currentUserId && (
-                                <button className="delete-button"
+                                <button className="btn"
                                     onClick={() => handleDelete(pledge.id)}>
                                 Delete Pledge
                                 </button>
