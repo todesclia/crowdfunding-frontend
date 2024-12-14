@@ -16,7 +16,7 @@ function HomePage() {
           {auth.token ? (
            <a className="home-page-btn" href="/addproject">Create a project</a>
           ) : (
-            <div className="card-details">Please log in to add a project</div>
+            <a className="home-page-btn" href="/login">Please login to add a project</a>
           )}
         </div> 
       </div>   

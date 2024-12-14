@@ -26,7 +26,7 @@ function ProjectPage() {
         {auth.token ? (
         <AddPledgeForm projectData={projectDetails} />
         ) : (
-          <div className="card-details">Please log in to make a pledge</div>
+          <></>
         )}
     </div>
   );

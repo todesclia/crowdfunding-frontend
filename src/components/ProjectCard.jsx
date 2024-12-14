@@ -15,7 +15,7 @@ function ProjectCard(props) {
       {auth.token ? (
         <a className="home-page-btn" href="#pledgeForm">Make a Pledge</a>
       ) : (
-        <div>Please log in to make a pledge</div>
+        <a className="home-page-btn" href="/login">Please login to make a pledge</a>
       )}
     </div>
   );
