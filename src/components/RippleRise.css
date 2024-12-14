@@ -16,8 +16,8 @@ body {
 
 .btn {
   padding: 0.8rem 1.8rem;
-  background-color: #fff;
-  color: #0e3601;
+  background-color: #0e3601;
+  color: #fff;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -39,24 +39,43 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem 2rem;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
 
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
 }
 
 .navbar a {
   color: #fff;
   text-decoration: none;
-  margin: 1.5rem;
-  font-size: 2rem;
-  transition: color 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar a:hover {
-  color: #849E9Fff;
+  color: #a8d5ba;
+  transform: scale(1.1);
 }
 
 /* Home Page */
@@ -137,7 +156,7 @@ body {
   max-width: 300px;
   border-radius: 10px;
   padding: 15px;
-  background-color: #55501Bff;
+  background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
@@ -155,8 +174,9 @@ body {
 .cards h3 {
   font-size: 1.3rem;
   margin-top: 10px;
-  color: #fff;
+  color: #0e3601;
   text-decoration: none;
+  text-align: center;
 }
 
 .cards a {
@@ -170,7 +190,7 @@ body {
 .cards p {
   font-size: 1rem;
   margin-top: 10px;
-  color: #849E9Fff;
+  color: #0e3601;
 }
 
 .project-details {
@@ -191,7 +211,7 @@ body {
   margin-top: 8rem;
   border-radius: 10px;
   padding: 15px;
-  background-color: #55501Bff;
+  background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   width: 100%;
@@ -210,14 +230,14 @@ body {
   font-size: 2rem;
   margin-top: 10px;
   text-align: center;
-  color: #fff;
+  color: #0e3601;
 }
 
 .card-details h3 {
   font-size: 2rem;
   margin-top: 10px;
   text-align: center;
-  color: #fff;
+  color: #0e3601;
 }
 
 .card-details a {
@@ -225,6 +245,7 @@ body {
   scroll-behavior: smooth;
   color: #0e3601;
   background-color: #fff;
+  border: 2px solid #0e3601;
   text-align: center;
   margin-top: 1.5rem;
   font-size: 1.0rem;
@@ -240,7 +261,7 @@ body {
 .card-details p {
   font-size: 1.5rem;
   margin-top: 10px;
-  color: #fff;
+  color: #0e3601;
 }
 
 .card-details ul {
@@ -256,7 +277,7 @@ body {
 }
 
 form {
-  background-color: #55501Bff;
+  background-color: #fff;
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -265,7 +286,7 @@ form {
 }
 
 form label {
-  color: #fff;
+  color: #0e3601;
 }
 
 form input,
@@ -274,12 +295,12 @@ form select {
   padding: 0.8rem;
   margin: 1rem 0rem 3rem;
   border-radius: 8px;
-  border: 1px solid #fff;
+  border: 1px solid #0e3601;
   font-size: 1rem;
 }
 
 form input:focus {
-  border-color: #55501Bff;
+  border-color: #0e3601;
   box-shadow: 0 0 5px rgba(61, 82, 160, 0.3);
 }
 
@@ -288,7 +309,7 @@ form textarea {
   padding: 0.8rem;
   margin: 1rem 0rem 3rem;
   border-radius: 8px;
-  border: 1px solid #fff;
+  border: 1px solid #0e3601;
   font-size: 1rem;
 }
 
@@ -322,13 +343,19 @@ input[type="checkbox"] {
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
   }
 
   .navbar a {
-    margin: 0.5rem 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .home {

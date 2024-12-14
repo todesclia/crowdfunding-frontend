@@ -12,18 +12,21 @@ function NavBar() {
 
   return (
     <div>
-      <nav className="navbar"> 
-        <Link to="/">Home</Link>
-        <Link to="/projects">View Projects</Link>
-        {auth.token ? (
-          <Link to="/" onClick={handleLogout}>
-              Logout
-          </Link>
-          ) : (
-          <Link to="/login">Login</Link>
-        )}
-        {!auth.token && <Link to="/usersignup">Sign Up</Link>}
-
+      <nav className="navbar">
+        <div className="navbar-brand">
+          <Link to="/">Ripple Rise</Link>
+        </div>
+        <div className="navbar-links">
+          <Link to="/projects">View Projects</Link>
+          {auth.token ? (
+            <Link to="/" onClick={handleLogout}>
+                Logout
+            </Link>
+            ) : (
+            <Link to="/login">Login</Link>
+          )}
+          {!auth.token && <Link to="/usersignup">Sign Up</Link>}
+        </div>
       </nav>
       <Outlet />
     </div>
