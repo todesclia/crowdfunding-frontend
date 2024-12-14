@@ -1,9 +1,11 @@
 import useProjects from "../hooks/use-projects";
 import ProjectCardsContainer from "../components/ProjectCardsContainer";
+import useAuth from "../hooks/use-auth.js";
 import "../components/RippleRise.css";
 
 function HomePage() {
   const { projects } = useProjects();
+  const {auth} = useAuth();
 
   return (
     <div>
@@ -11,7 +13,11 @@ function HomePage() {
         <div className="home-page-content">
           <h1>Ripple Rise</h1>
           <h2>Community driven fundraising programs</h2>
-          <a className="home-page-btn" href="/addproject">Start a project</a>
+          {auth.token ? (
+           <a className="home-page-btn" href="/addproject">Create a project</a>
+          ) : (
+            <div className="card-details">Please log in to add a project</div>
+          )}
         </div> 
       </div>   
       <div className="project-list">

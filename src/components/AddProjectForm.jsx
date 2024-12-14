@@ -6,6 +6,8 @@ import { z } from "zod";
 
 function AddProjectForm() {
     const navigate = useNavigate();
+    const userID = window.localStorage.getItem("userID")
+
     const [projectDetails, setProjectDetails] = useState({
         projecttitle: "",
         projectdescription: "",
@@ -40,10 +42,8 @@ function AddProjectForm() {
 
        const result = projectSchema.safeParse(projectDetails);
        if (!result.success) {
-        const error = result.error.errors?.[0]?.message || "Validation failed";
-        if (error) {
-          alert(error.message);
-        }
+        const errorMessages = result.error.errors.map((err) => err.message);
+        alert(errorMessages.join("\n"));
         return;
       }
       try {
@@ -52,7 +52,7 @@ function AddProjectForm() {
         formData.append("description", result.data.projectdescription);
         formData.append("goal", parseInt(result.data.projectgoal, 10));
         formData.append("is_open", 1);
-        formData.append("owner", 34);
+        formData.append("owner", userID);
         if (result.data.projectimage) {
           formData.append("image", result.data.projectimage);
         }
@@ -60,7 +60,7 @@ function AddProjectForm() {
         await postProject(formData);
         navigate("/");
       } catch (error) {
-        alert(error.message);
+        alert("Failed to add project. Please try again later.");
       }
     };
 
