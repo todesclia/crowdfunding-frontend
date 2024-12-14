@@ -1,22 +1,34 @@
 import { useState, useEffect } from "react";
 import getUserDetails from "../api/get-user-details";
 
-export default function useUserDetails(projectId) {
-  const [userDetails, setUserDetails] = useState();
+export default function useUserDetails(pledges)  {
+  const [userDetails, setUserDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
 
   useEffect(() => {
-    getUserDetails(userId)
-      .then((user) => {
-        setUserDetails(user);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setIsLoading(false);
+    const fetchUserDetails = async () => {
+      const userMap = {};
+      const promises = pledges.map(async (pledge) => {
+        if (pledge.supporter && !userMap[pledge.supporter]) {
+          try {
+            const user = await getUserDetails(pledge.supporter);
+            userMap[pledge.supporter] = `${user.first_name} ${user.last_name}`;
+          } catch (error) {
+            console.error(`Error fetching user details from pledge`, error);
+          }
+        }
       });
-  }, [userId]);
+      await Promise.all(promises);
+      setUserDetails(userMap);
+      setIsLoading(false);
+    };
 
-  return { userDetails, isLoading, error };
-}
+    if (pledges.length > 0) {
+      fetchUserDetails();
+    }
+  }, [pledges]);
+
+  return { userDetails, isLoading };
+};
+

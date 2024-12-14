@@ -1,6 +1,6 @@
 import { useState } from "react";
-import getUserDetails from "../api/get-user-details";
 import deletePledge from "../api/delete-pledge";
+import useUserDetails from "../hooks/use-user-details.js";
 
 import "./RippleRise.css";
 
@@ -8,29 +8,7 @@ function PledgesContainer(props) {
     const { projectData } = props;
     const [pledges, setPledges] = useState(projectData.pledges);
     const currentUserId = window.localStorage.getItem("userID");
-    const [userDetails, setUserDetails] = useState({});
-    const [loadingUsers, setLoadingUsers] = useState(true);
-
-    const fetchUserDetails = async () => {
-        const userMap = {};
-
-        for (const pledge of pledges) {
-            if (pledge.supporter && !userDetails[pledge.supporter]) {
-                try {
-                    const user = await getUserDetails(pledge.supporter);
-                    userMap[pledge.supporter] = `${user.first_name} ${user.last_name}`;
-                } catch (error) {
-                    console.error(`Error fetching user details for ${pledge.supporter}:`, error);
-                }
-            }
-        }
-
-        setUserDetails((prevState) => ({
-            ...prevState,
-            ...userMap,
-        }));
-        setLoadingUsers(false);
-    };
+    const { userDetails, loadingUsers } = useUserDetails(pledges);
 
     const handleDelete = async (pledgeID) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this pledge?");
@@ -50,7 +28,6 @@ function PledgesContainer(props) {
     };
 
     if (loadingUsers && pledges.length > 0) {
-        fetchUserDetails();
         return <div>Loading user details...</div>;
     }
 
@@ -64,13 +41,8 @@ function PledgesContainer(props) {
                     <li key={pledge.id}>
                         <p>Amount ${pledge.amount}<br></br>
                         {pledge.comment}<br></br>
-                        {loadingUsers ? (
-                                        "Loading..."
-                                    ) : pledge.anonymous ? (
-                                        "Anonymous"
-                                    ) : userDetails[pledge.supporter] || 
-                                        "Unknown"
-                                    }</p>
+                        {pledge.anonymous ? "Anonymous" : userDetails[pledge.supporter] || "Unknown"}
+                        </p>
                         <div>
                             {String(pledge.supporter) === currentUserId && (
                                 <button className="btn"
