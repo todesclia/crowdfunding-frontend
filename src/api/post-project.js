@@ -23,7 +23,7 @@ async function postProject(formData) {
     if (error instanceof SyntaxError) {
       throw new Error("Unexpected response from the server. Please try again later.");
     } else {
-      throw error; // Propagate the error for the caller to handle
+      throw error;
     }
   }
 }

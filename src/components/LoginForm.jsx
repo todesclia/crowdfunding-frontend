@@ -17,9 +17,7 @@ function LoginForm() {
 
     const loginSchema = z.object({
       username: z.string().min(1, { message: "Username must not be empty" }),
-      password: z
-        .string()
-        .min(8, { message: "Password must be at least 8 characters long" }),
+      password: z.string().min(1, { message: "Password must not be empty" }),
     });
 
     const handleChange = (event) => {
@@ -54,7 +52,6 @@ function LoginForm() {
         
         navigate("/");
       } catch (err) {
-        // Check if the error response contains `non_field_errors`
         if (err.response && err.response.data && err.response.data.non_field_errors) {
           setError(err.response.data.non_field_errors[0]);
         } else {
@@ -66,7 +63,7 @@ function LoginForm() {
     return (
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form">
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="error-popup">{error}</div>}
           <div>
             <label htmlFor="username">Enter your username</label>
             <input type="text" id="username" onChange={handleChange}/>

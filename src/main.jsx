@@ -7,8 +7,6 @@ import ProjectsPage from "./pages/ProjectsPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import UserSigunupPage from "./pages/UserSignupPage.jsx";
 import AddProjectPage from "./pages/AddProjectPage.jsx";
-
-
 import NavBar from "./components/NavBar.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
 

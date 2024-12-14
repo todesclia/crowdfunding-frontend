@@ -1,9 +1,6 @@
 import { useState } from "react";
-import postPledge from "../api/post-pledge.js";
-import { useNavigate } from "react-router-dom";
- 
+import postPledge from "../api/post-pledge.js"; 
 import { z } from "zod";
-
 
 function AddPledgeForm({projectData}) {
 
@@ -17,11 +14,11 @@ function AddPledgeForm({projectData}) {
         projectID: projectID,
         supporter: userID,
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState('');
 
     const pledgeSchema = z.object({
       amount: z.coerce.string().regex(/^\d+$/, { message: "Amount must be a positive integer" }),
-      comment: z.string().optional(),
+      comment: z.string().min(1, { message: "Comment must not be empty " }),
       projectID: z.number().optional(),
       isanonymous: z.boolean().optional(),
     });  
@@ -36,12 +33,17 @@ function AddPledgeForm({projectData}) {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-      if (isSubmitting) return;
-      setIsSubmitting(true);
+     
       const result = pledgeSchema.safeParse(pledgeDetails);
+      if (!result.success) {
+        const error = result.error.errors?.[0];
+        if (error) {
+          setError(error.message);
+        }
+        return;
+      }
 
       try {
-        // Post the pledge data to the server
         const response = await postPledge(
           result.data.amount,
           result.data.comment,
@@ -52,20 +54,19 @@ function AddPledgeForm({projectData}) {
       } catch (error) {
         console.error("Error submitting pledge:", error);
         alert("There was an error processing your pledge.");
-      } finally {
-        setIsSubmitting(false); // Reset the form submission state
       }
     };
 
     return (
       <div className="form-container">
         <form id="pledgeForm" onSubmit={handleSubmit} className="form">
+          {error && <div className="error-popup">{error}</div>}
           <div>
             <label htmlFor="amount">Enter your donation</label>
             <input type="number" id="amount" onChange={handleChange} placeholder="$" />
           </div>
           <div>
-            <label htmlFor="comment">Add a message (optional)</label>
+            <label htmlFor="comment">Add a message</label>
             <input type="text" id="comment" onChange={handleChange} />
           </div>
           <div className = "checkbox-container">
@@ -73,8 +74,7 @@ function AddPledgeForm({projectData}) {
               <input type="checkbox" id="isanonymous" onChange={handleChange} />&nbsp;&nbsp;&nbsp;Don't display my name publicly
             </label>
           </div>
-          <button type="submit" className="btn" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Add"} 
+          <button type="submit" className="btn">Add
           </button>
         </form>
       </div>

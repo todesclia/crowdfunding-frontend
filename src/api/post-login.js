@@ -19,7 +19,6 @@ async function postLogin(username, password) {
       });
   
       const errorMessage = data?.detail ?? fallbackError;
-      // Customize the error message for incorrect credentials
       if (errorMessage.includes("non_field_errors") || errorMessage.includes("username or password")) {
         throw new Error("Incorrect username or password");
       }

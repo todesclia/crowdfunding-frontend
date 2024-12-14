@@ -14,6 +14,7 @@ function AddProjectForm() {
         projectgoal: "",
         projectimage: null,
     });
+    const [error, setError] = useState('');
 
     const projectSchema = z.object({
       projecttitle: z.string().min(1, { message: "Title must not be empty" }),
@@ -38,14 +39,17 @@ function AddProjectForm() {
     };
 
     const handleSubmit = async (event) => {
-       event.preventDefault();
+      event.preventDefault();
 
-       const result = projectSchema.safeParse(projectDetails);
-       if (!result.success) {
-        const errorMessages = result.error.errors.map((err) => err.message);
-        alert(errorMessages.join("\n"));
+      const result = projectSchema.safeParse(projectDetails);
+      if (!result.success) {
+        const error = result.error.errors?.[0];
+        if (error) {
+          setError(error.message);
+        }
         return;
       }
+      
       try {
         const formData = new FormData();
         formData.append("title", result.data.projecttitle);
@@ -67,6 +71,7 @@ function AddProjectForm() {
     return (
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form" >
+          {error && <div className="error-popup">{error}</div>}
           <div>
             <label htmlFor="projecttitle">Give your fundraiser a title</label>
             <input type="text" id="projecttitle" onChange={handleChange}/>

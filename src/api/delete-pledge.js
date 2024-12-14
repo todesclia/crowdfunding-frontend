@@ -2,8 +2,6 @@ async function deletePledge(pledgeID) {
     const url = `${import.meta.env.VITE_API_URL}/pledges/${pledgeID}/`;
     const token = window.localStorage.getItem("token");
     const supporter = window.localStorage.getItem("userID");
-
-
     const response = await fetch(url, {
       method: "DELETE",
       headers: {

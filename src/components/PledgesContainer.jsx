@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import getUserDetails from "../api/get-user-details";
 import deletePledge from "../api/delete-pledge";
 

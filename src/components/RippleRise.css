@@ -338,6 +338,22 @@ input[type="checkbox"] {
   font-size: 0.9rem;
 }
 
+.error-popup {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.error-popup p {
+  margin: 0;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
