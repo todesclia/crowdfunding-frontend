@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import getUserDetails from "../api/get-user-details";
+import deletePledge from "../api/delete-pledge";
 
 import "./RippleRise.css";
 
 function PledgesContainer(props) {
     const { projectData } = props;
-    const pledges = projectData.pledges;
-
+    const [pledges, setPledges] = useState(projectData.pledges);
+    const currentUserId = window.localStorage.getItem("userID");
     const [userDetails, setUserDetails] = useState({});
     const [loadingUsers, setLoadingUsers] = useState(true);
 
-    const fetchUserDetailsSync = async () => {
+    const fetchUserDetails = async () => {
         const userMap = {};
 
         for (const pledge of pledges) {
@@ -24,7 +25,6 @@ function PledgesContainer(props) {
             }
         }
 
-        // Update state synchronously after all fetches
         setUserDetails((prevState) => ({
             ...prevState,
             ...userMap,
@@ -32,9 +32,25 @@ function PledgesContainer(props) {
         setLoadingUsers(false);
     };
 
-    // Synchronously call the fetch logic before rendering
+    const handleDelete = async (pledgeID) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this pledge?");
+        if (!confirmDelete) return;
+
+        try {
+            await deletePledge(pledgeID);
+            alert("Pledge deleted successfully!");
+
+            setPledges((prevPledges) =>
+                prevPledges.filter((pledge) => pledge.id !== pledgeID)
+            );
+        } catch (error) {
+            console.error("Error deleting pledge:", error);
+            alert("Failed to delete the pledge.");
+        }
+    };
+
     if (loadingUsers && pledges.length > 0) {
-        fetchUserDetailsSync();
+        fetchUserDetails();
         return <div>Loading user details...</div>;
     }
 
@@ -55,6 +71,14 @@ function PledgesContainer(props) {
                                     ) : userDetails[pledge.supporter] || 
                                         "Unknown"
                                     }</p>
+                        <div>
+                            {String(pledge.supporter) === currentUserId && (
+                                <button className="delete-button"
+                                    onClick={() => handleDelete(pledge.id)}>
+                                Delete Pledge
+                                </button>
+                            )}
+                        </div>
                         <p>&nbsp;</p>
                     </li>
                     ))}
