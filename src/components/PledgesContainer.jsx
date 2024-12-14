@@ -8,36 +8,35 @@ function PledgesContainer(props) {
     const pledges = projectData.pledges;
 
     const [userDetails, setUserDetails] = useState({});
-    useEffect(() => {
-        const fetchUserDetails = async () => {
-            const userPromises = pledges
-                .filter((pledge) => pledge.supporter && !userDetails[pledge.supporter]) // Filter pledges with supporters not yet fetched
-                .map((pledge) => getUserDetails(pledge.supporter)); // Create an array of promises
+    const [loadingUsers, setLoadingUsers] = useState(true);
 
-            try {
-                // Wait for all user data to be fetched
-                const users = await Promise.all(userPromises);
+    const fetchUserDetailsSync = async () => {
+        const userMap = {};
 
-                // Update userDetails state with all fetched user data
-                const userMap = users.reduce((acc, user) => {
-                    acc[user.id] = `${user.first_name} ${user.last_name}`;
-                    console.log(user.first_name);
-                    return acc;
-                }, {});
-
-                setUserDetails((prevState) => ({
-                    ...prevState,
-                    ...userMap,
-                }));
-            } catch (error) {
-                console.error("Error fetching user details:", error);
+        for (const pledge of pledges) {
+            if (pledge.supporter && !userDetails[pledge.supporter]) {
+                try {
+                    const user = await getUserDetails(pledge.supporter);
+                    userMap[pledge.supporter] = `${user.first_name} ${user.last_name}`;
+                } catch (error) {
+                    console.error(`Error fetching user details for ${pledge.supporter}:`, error);
+                }
             }
-        };
-
-        if (pledges.length > 0) {
-            fetchUserDetails();
         }
-    }, [pledges]);
+
+        // Update state synchronously after all fetches
+        setUserDetails((prevState) => ({
+            ...prevState,
+            ...userMap,
+        }));
+        setLoadingUsers(false);
+    };
+
+    // Synchronously call the fetch logic before rendering
+    if (loadingUsers && pledges.length > 0) {
+        fetchUserDetailsSync();
+        return <div>Loading user details...</div>;
+    }
 
     return (
         <div className="card-details">
@@ -49,8 +48,13 @@ function PledgesContainer(props) {
                     <li key={pledge.id}>
                         <p>Amount ${pledge.amount}<br></br>
                         {pledge.comment}<br></br>
-                        {" "}{pledge.anonymous ? "Anonymous" : userDetails[pledge.supporter] || pledge.supporter}
-                        </p>
+                        {loadingUsers ? (
+                                        "Loading..."
+                                    ) : pledge.anonymous ? (
+                                        "Anonymous"
+                                    ) : userDetails[pledge.supporter] || 
+                                        "Unknown"
+                                    }</p>
                         <p>&nbsp;</p>
                     </li>
                     ))}
