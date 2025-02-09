@@ -6,7 +6,7 @@ function HomePage() {
   const { projects } = useProjects();
 
   return (
-    <div>
+    <div className="project-list-container">
       <div className="project-list">
           {projects.map((projectData, key) => {
             return <ProjectCardsContainer key={key} projectData={projectData} />;

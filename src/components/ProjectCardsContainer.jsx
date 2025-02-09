@@ -1,20 +1,35 @@
 import { Link } from "react-router-dom";
 import "./RippleRise.css";
 
-function ProjectCardsContainer(props) {
-    const { projectData } = props;
-    const projectLink = `../project/${projectData.id}`;
-    const imageUrl = `${projectData.image}`;
+function ProjectCardsContainer({ projectData }) {
     return (
-        <div className="cards">
-            <Link to={projectLink}>
+        <div className="cards" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            width: '100%'
+        }}>
+            <a href={`/project/${projectData.id}`} style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+            }}>
                 <h3>{projectData.title}</h3>
-                <img src={imageUrl} alt={projectData.title} />
-            </Link>
+                <img 
+                    src={projectData.image} 
+                    alt={projectData.title}
+                    style={{
+                        maxWidth: '100%',
+                        height: 'auto'
+                    }}
+                />
+            </a>
             <p>{projectData.description}</p>
             <p>$ {projectData.goal}</p>
         </div>
     );
-};
+}
 
 export default ProjectCardsContainer;
